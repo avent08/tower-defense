@@ -38,9 +38,9 @@ public class PlacementPlane : MonoBehaviour {
 
                 box.transform.parent = transform;
                 box.transform.localPosition = Vector3.zero;
-                box.transform.localPosition = new Vector3(0, 2f, 0);
+                box.transform.localPosition = new Vector3(0, 1f, 0);
                 box.transform.localRotation = Quaternion.identity;
-                box.transform.localScale = Vector3.one * 10;
+                box.transform.localScale = Vector3.one * 3;
             }
             else {
                 Debug.Log("You can't build here");

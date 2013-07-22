@@ -16,7 +16,15 @@ public class Tower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (towerHealth <= 0f) {
-            DestroyImmediate(gameObject);
+            gameObject.AddComponent<Detonator>();
+            Detonator detonator = gameObject.GetComponent<Detonator>();
+            detonator.size = 3;
+            detonator.duration = 1f;
+            detonator.destroyTime = 1.5f;
+            detonator.explodeOnStart = true;
+            gameObject.renderer.enabled = false;
+
+            //DestroyImmediate(gameObject);
         }
 	}
 }

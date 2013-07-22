@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        generateTowerPlacer();
+        GenerateTowerPlacer();
         gameState = GameState.none;
 	}
 	
@@ -43,21 +43,22 @@ public class GameManager : MonoBehaviour {
 
         m.transform.localPosition = Vector3.zero;
         m.transform.localRotation = Quaternion.identity;
-        m.transform.localScale = Vector3.one * 0.2f;
+        m.transform.localScale = Vector3.one;
 
         GameObject land = GameObject.Find("Planes") as GameObject;
         Bounds landBounds = land.GetComponent<Renderer>().bounds;
 
-        m.transform.localPosition = new Vector3(landBounds.extents.x * 2, 1.2f, Random.Range(-1, 9)+ land.transform.localPosition.z);
+        m.transform.localPosition = new Vector3(landBounds.extents.x * 2, 1.2f, Random.Range(0, 5) * 2 + land.transform.localPosition.z);
     }
 
-    private void generateTowerPlacer(){
+    void GenerateTowerPlacer(){
         GameObject towerPlacerLand = GameObject.Find("Planes") as GameObject;
         float xOrigin = -4f, yOrigin = 0.01f, zOrigin = 4;
         for (int x = 0; x < 9; x++) {
             for (int z = 0; z < 5; z++) {
                 GameObject towerPlacer = GameObject.Instantiate(towerPlace) as GameObject;
                 towerPlacer.transform.parent = towerPlacerLand.transform;
+                towerPlacer.transform.name = "PlacementPlane";
 
                 towerPlacer.transform.localPosition = new Vector3(
                     xOrigin + x,
@@ -65,17 +66,16 @@ public class GameManager : MonoBehaviour {
                     zOrigin - z);
 
                 towerPlacer.transform.localScale = Vector3.one * 0.1f;
-
             } 
         }
     }
 
 }
 
-    public enum GameState {
-        none,
-        build,
-        destroy
-    }
+public enum GameState {
+    none,
+    build,
+    destroy
+}
 
    
