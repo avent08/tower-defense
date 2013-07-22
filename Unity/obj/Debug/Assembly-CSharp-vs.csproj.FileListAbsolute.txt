@@ -1,0 +1,10 @@
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\Temp\bin\Debug\Assembly-CSharp.dll
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\Temp\bin\Debug\UnityEditor.dll
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\Temp\bin\Debug\UnityEngine.dll
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\Temp\bin\Debug\Mono.Cecil.dll
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\Temp\bin\Debug\nunit.framework.dll
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\obj\Debug\ResolveAssemblyReference.cache
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\obj\Debug\Assembly-CSharp.dll
+D:\Users\christian.iwanto\Documents\Unity - Testing\TowerDefenseTest\obj\Debug\Assembly-CSharp.pdb
