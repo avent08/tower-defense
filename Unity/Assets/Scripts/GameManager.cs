@@ -6,9 +6,13 @@ public class GameManager : MonoBehaviour {
     public GameState gameState;
     public GameObject towerPlace;
     public int ctr;
+    private static UILabel moneyLabel;
+    public static int money = 100;
 
 	// Use this for initialization
 	void Start () {
+        moneyLabel = GameObject.Find("moneyLabel").GetComponent<UILabel>() as UILabel;
+        moneyLabel.text = "Your Money = $ " + money;
         GenerateTowerPlacer();
         gameState = GameState.none;
 	}
@@ -70,12 +74,40 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public static void buyTower(TowerCategories towerCategory)
+    {
+        if(towerCategory == TowerCategories.Weak)
+            money -= 40;
+        else if (towerCategory == TowerCategories.Average)
+            money -= 60;
+        else if (towerCategory == TowerCategories.Strong)
+            money -= 80;
+        else if (towerCategory == TowerCategories.Powerful)
+            money -= 100;
+
+        moneyLabel.text = "Your Money = $ " + money;
+        
+    }
+
+    public static void getMoney()
+    {
+        money += 20;
+        moneyLabel.text = "Your Money = $ " + money;
+    }
+
 }
 
 public enum GameState {
     none,
     build,
     destroy
+}
+
+public enum TowerCategories { 
+    Weak,
+    Average,
+    Strong,
+    Powerful
 }
 
    

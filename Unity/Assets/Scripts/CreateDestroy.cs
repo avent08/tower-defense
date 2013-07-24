@@ -13,7 +13,8 @@ public class CreateDestroy : MonoBehaviour {
 	// Update is called once per frame
 	void OnClick () {
         if (buttonName == "btnCreate") {
-            gameManager.gameState = GameState.build;
+            if(GameManager.money>= 20)
+                gameManager.gameState = GameState.build;
         }
         else if (buttonName == "btnDestroy") {
             gameManager.gameState = GameState.destroy;

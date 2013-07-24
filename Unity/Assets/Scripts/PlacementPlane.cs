@@ -40,7 +40,11 @@ public class PlacementPlane : MonoBehaviour {
                 box.transform.localPosition = Vector3.zero;
                 box.transform.localPosition = new Vector3(0, 1f, 0);
                 box.transform.localRotation = Quaternion.identity;
-                box.transform.localScale = Vector3.one * 3;
+                box.transform.localScale = Vector3.one * 3; 
+                Vector3 colliderDefaultSize = box.GetComponent<BoxCollider>().size;
+                box.GetComponent<BoxCollider>().size = new Vector3(colliderDefaultSize.x - (((box.transform.position.x+8)/2)*3), 1, 1);
+                colliderDefaultSize = box.GetComponent<BoxCollider>().size;
+                box.GetComponent<BoxCollider>().center = new Vector3(colliderDefaultSize.x/2, 0, 0);
             }
             else {
                 Debug.Log("You can't build here");

@@ -7,13 +7,13 @@ public class Monster : MonoBehaviour {
     public float walkSpeed = 1f;
     public float monsterHealth = 20f;
     private const float minPosX = -15f;
-
+    private bool isDestroy = false;
     
     private Tower target;
 
 	// Use this for initialization
 	void Start () {
-        monsterState = MonsterState.walk;
+        monsterState = MonsterState.walk;  
 	}
 
     void Walk() {
@@ -37,14 +37,39 @@ public class Monster : MonoBehaviour {
 
         if (transform.localPosition.x <= minPosX)
             DestroyImmediate(transform.gameObject);
+
+        if (monsterHealth <= 0)
+        {            
+            gameObject.AddComponent<Detonator>();
+            Detonator detonator = gameObject.GetComponent<Detonator>();
+            detonator.size = 3;
+            detonator.duration = 1f;
+            detonator.destroyTime = 1.5f;
+            detonator.explodeOnStart = true;
+            gameObject.renderer.enabled = false;
+            gameObject.collider.enabled = false;
+            if(!isDestroy)
+                GameManager.getMoney();
+            isDestroy = true;
+        }
+
 	}
 
-    void OnTriggerEnter(Collider collider) {
-        if (collider.tag == "Tower") {
-            monsterState = MonsterState.attack;
-            target = collider.gameObject.GetComponent<Tower>();
+    void OnTriggerStay(Collider collider) {
+
+        if (collider.tag == "Bullet") {
+            BulletBehaviour bullet = collider.gameObject.GetComponent<BulletBehaviour>();
+            monsterHealth -= bullet.bulletPower;
+            Destroy(collider.gameObject);
         }
-    }
+
+
+        if (collider.tag == "Tower" && Vector3.Distance(collider.transform.position, gameObject.transform.position) < 1)
+        {
+            monsterState = MonsterState.attack;
+            target = collider.gameObject.GetComponent<Tower>();            
+        }
+    }  
 }
 
 public enum MonsterState {
